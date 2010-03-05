@@ -297,6 +297,12 @@ module Facebooker
     end
   end
 
+  class UploadNativeStrings < Parser#:nodoc:
+    def self.process(data)
+      element('intl_uploadNativeStrings_response', data).content.strip
+    end
+  end
+
   class PublishActionOfUser < Parser#:nodoc:
     def self.process(data)
       element('feed_publishActionOfUser_response', data).content.strip
@@ -945,7 +951,8 @@ module Facebooker
       'facebook.dashboard.multiClearNews' => DashboardMultiClearNews,
       'facebook.dashboard.publishActivity' => DashboardPublishActivity,
       'facebook.dashboard.removeActivity' => DashboardRemoveActivity,
-      'facebook.dashboard.getActivity' => DashboardGetActivity
+      'facebook.dashboard.getActivity' => DashboardGetActivity,
+      'facebook.intl.uploadNativeStrings' => UploadNativeStrings
     }
   end
 end
